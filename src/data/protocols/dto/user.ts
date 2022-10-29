@@ -3,15 +3,7 @@
  */
 
 export interface ListUsersDTO {
-    since?: number
+    since: number
     page: number
-}
-
-
-/**
- * RESPONSE DTO
- */
-
-export interface ResponseListUsersDTO {
-
+    per_page: number
 }
