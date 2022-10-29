@@ -1,25 +1,7 @@
 version: "3"
 
 services:
-  database:
-    #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
-    image: postgres
-    container_name: oportuniza-api-postgres
-    restart: always
-    ports:
-      - 65432:5432
-    environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=oportuniza@2022
-      - POSTGRES_DB=oportuniza_ai
-    volumes:
-      - pgdata:/data/postgres
-
   redis:
     image: redis:alpine
     ports:
       - 6379:6379
-
-volumes:
-  pgdata:
-    driver: local

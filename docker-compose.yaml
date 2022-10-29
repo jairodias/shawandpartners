@@ -1,10 +1,10 @@
 version: '3'
 services:
   api:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
-    container_name: oportuniza-plataforma
+    container_name: shawandpartners-api
     restart: always
     ports:
       - '8080:8080'
