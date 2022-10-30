@@ -1,4 +1,5 @@
 import { jest, expect, test, describe } from '@jest/globals'
+import { randomUUID } from 'crypto'
 import superTest from 'supertest'
 import { server } from '../../src/shared/infra/http/server'
 
@@ -99,6 +100,18 @@ describe('API E2E Test Suite', () => {
 			'username with value _jairodias_ fails to match the required pattern: /^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$/',
 		)
 		expect(error).toEqual('VALIDATION_ERROR')
+	})
+
+	test("GET /:username/details - should return an object empty if username doesn't exists", async () => {
+		const username_not_exist = randomUUID()
+		const response = await superTest(server).get(
+			`/api/users/${username_not_exist}/details`,
+		)
+		expect(404).toBe(response.statusCode)
+
+		const { error, message } = response.body
+		expect(error).toEqual('APP_ERROR')
+		expect(message).toEqual("User doesn't exists.")
 	})
 
 	test.todo(
