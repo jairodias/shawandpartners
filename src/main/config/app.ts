@@ -8,6 +8,7 @@ import {
 	bodyParser,
 	cors,
 	helmet,
+	noCache,
 } from '@/main/middlewares'
 
 import setupRoutes from '@/main/config/routes'
@@ -16,6 +17,7 @@ export const setupApp = (): Express => {
 	const app = express()
 
 	app.use(helmet)
+	app.use(noCache)
 	app.use(bodyParser)
 	app.use(cors)
 	app.use(celebrateErrors)

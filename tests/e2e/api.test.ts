@@ -114,9 +114,61 @@ describe('API E2E Test Suite', () => {
 		expect(message).toEqual("User doesn't exists.")
 	})
 
-	test.todo(
-		'GET /:username/details - should return an object with user detail',
-	)
+	test('GET /:username/details - should return an object with user detail', async () => {
+		const valid_username = 'jairodias'
+		const response = await superTest(server).get(
+			`/api/users/${valid_username}/details`,
+		)
+		expect(200).toBe(response.statusCode)
+
+		const { data } = response.body
+
+		const data_valid_username_provided = {
+			login: 'jairodias',
+			id: 51006591,
+			node_id: 'MDQ6VXNlcjUxMDA2NTkx',
+			avatar_url:
+				'https://avatars.githubusercontent.com/u/51006591?v=4',
+			gravatar_id: '',
+			url: 'https://api.github.com/users/jairodias',
+			html_url: 'https://github.com/jairodias',
+			followers_url:
+				'https://api.github.com/users/jairodias/followers',
+			following_url:
+				'https://api.github.com/users/jairodias/following{/other_user}',
+			gists_url:
+				'https://api.github.com/users/jairodias/gists{/gist_id}',
+			starred_url:
+				'https://api.github.com/users/jairodias/starred{/owner}{/repo}',
+			subscriptions_url:
+				'https://api.github.com/users/jairodias/subscriptions',
+			organizations_url:
+				'https://api.github.com/users/jairodias/orgs',
+			repos_url: 'https://api.github.com/users/jairodias/repos',
+			events_url:
+				'https://api.github.com/users/jairodias/events{/privacy}',
+			received_events_url:
+				'https://api.github.com/users/jairodias/received_events',
+			type: 'User',
+			site_admin: false,
+			name: 'Jairo Dias',
+			company: 'CredPago',
+			blog: '',
+			location: 'Brasil - Joinville/SC',
+			email: null,
+			hireable: null,
+			bio: 'Desenvolvedor, apaixonado por tecnologia, ando desbravando tudo aquilo que o mercado tem de novo, melhorando meus aspectos negativo e aprimorando os positivos. ',
+			twitter_username: null,
+			public_repos: 60,
+			public_gists: 0,
+			followers: 16,
+			following: 5,
+			created_at: '2019-05-24T21:07:35Z',
+			updated_at: '2022-10-15T21:16:44Z',
+		}
+
+		expect(data_valid_username_provided).toEqual(data)
+	})
 
 	test.todo(
 		'GET /:username/repos - should return an object with user repositories',
