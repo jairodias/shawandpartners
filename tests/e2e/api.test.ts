@@ -199,7 +199,23 @@ describe('API E2E Test Suite', () => {
 		expect(message).toEqual("User doesn't exists.")
 	})
 
-	test.todo(
-		'GET /:username/repos - should return an object with user repositories',
-	)
+	test('GET /:username/repos - should return an object with repositories user', async () => {
+		const valid_username = 'jairodias'
+		const response = await superTest(server).get(
+			`/api/users/${valid_username}/repos`,
+		)
+		console.log(response.statusCode)
+		expect(200).toBe(response.statusCode)
+
+		const [repository] = response.body.data
+
+		expect(repository).toHaveProperty('id')
+		expect(repository).toHaveProperty('full_name')
+		expect(repository).toHaveProperty('url')
+		expect(repository).toHaveProperty('forks_url')
+		expect(repository).toHaveProperty('default_branch')
+		expect(repository).toHaveProperty('language')
+		expect(repository).toHaveProperty('clone_url')
+		expect(repository).toHaveProperty('git_url')
+	})
 })
