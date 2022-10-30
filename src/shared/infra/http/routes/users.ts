@@ -22,7 +22,7 @@ export default (router: Router): void => {
 		celebrate({
 			query: {
 				per_page: Joi.number().optional().default(10).min(1),
-				since: Joi.number().required().min(0),
+				since: Joi.number().optional().default(0).min(0),
 			},
 		}),
 		userController.index,

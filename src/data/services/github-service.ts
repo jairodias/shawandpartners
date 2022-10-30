@@ -20,7 +20,7 @@ export class GithubService implements IGithubService {
 			)
 
 			const next = `${
-				env.api_github_url
+				env.application_hostname
 			}/users?per_page=${per_page}&since=${since + per_page}`
 
 			return {
