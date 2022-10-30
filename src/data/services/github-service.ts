@@ -12,9 +12,6 @@ export class GithubService implements IGithubService {
 		per_page,
 		since,
 	}: ListUsersDTO): Promise<ResponseListUsersDTO> {
-		console.log(
-			`${env.api_github_url}/users?per_page=${per_page}&since=${since}`,
-		)
 		const { data } = await axios.get(
 			`${env.api_github_url}/users?per_page=${per_page}&since=${since}`,
 		)
@@ -26,6 +23,7 @@ export class GithubService implements IGithubService {
 		return {
 			next,
 			items: data,
+			has_more: data.length === 0 ? false : true,
 		}
 	}
 }

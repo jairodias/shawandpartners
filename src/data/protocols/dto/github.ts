@@ -26,4 +26,5 @@ interface GithubListUsers {
 export interface ResponseListUsersDTO {
 	next: string
 	items: GithubListUsers[]
+	has_more: boolean
 }
