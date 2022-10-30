@@ -6,10 +6,9 @@ export class UserController {
 		request: Request,
 		response: Response,
 	): Promise<Response> {
-		const { page, since, per_page } = request.query
+		const { since, per_page } = request.query
 
 		const data = await makeUserService().index({
-			page: page as unknown as number,
 			since: since as unknown as number,
 			per_page: per_page as unknown as number,
 		})

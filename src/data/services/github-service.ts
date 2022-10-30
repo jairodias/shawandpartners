@@ -8,7 +8,6 @@ import env from '@/main/config/env'
 
 export class GithubService implements IGithubService {
 	async listUsers({
-		page,
 		per_page,
 		since,
 	}: ListUsersDTO): Promise<ResponseListUsersDTO> {
@@ -22,8 +21,8 @@ export class GithubService implements IGithubService {
 
 		return {
 			next,
-			items: data,
 			has_more: data.length === 0 ? false : true,
+			items: data,
 		}
 	}
 }
