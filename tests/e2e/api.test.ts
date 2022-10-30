@@ -173,7 +173,7 @@ describe('API E2E Test Suite', () => {
 	test('GET /:username/repos - should return an error, if username provided is invalid', async () => {
 		const invalid_username = '_jairodias_'
 		const response = await superTest(server).get(
-			`/api/users/${invalid_username}/details`,
+			`/api/users/${invalid_username}/repos`,
 		)
 
 		expect(400).toBe(response.statusCode)
@@ -187,9 +187,17 @@ describe('API E2E Test Suite', () => {
 		expect(error).toEqual('VALIDATION_ERROR')
 	})
 
-	test.todo(
-		"GET /:username/repos - should return an error if username doesn't exists",
-	)
+	test("GET /:username/repos - should return an error if username doesn't exists", async () => {
+		const username_not_exist = randomUUID()
+		const response = await superTest(server).get(
+			`/api/users/${username_not_exist}/repos`,
+		)
+		expect(404).toBe(response.statusCode)
+
+		const { error, message } = response.body
+		expect(error).toEqual('APP_ERROR')
+		expect(message).toEqual("User doesn't exists.")
+	})
 
 	test.todo(
 		'GET /:username/repos - should return an object with user repositories',
