@@ -3,7 +3,9 @@ import {
 	GithubListUsersDTO,
 	ListUsersDTO,
 	ResponseListUsersDTO,
+	ResponseUserRepositoriesDTO,
 	UserDetailsDTO,
+	UserRepositoriesDTO,
 } from '@/data/protocols/dto'
 import {
 	IGithubService,
@@ -26,5 +28,11 @@ export class UserService implements IUserService {
 		data: UserDetailsDTO,
 	): Promise<GithubListUsersDTO> {
 		return this.githubService.getUserByUsername(data)
+	}
+
+	async userRepositories(
+		data: UserRepositoriesDTO,
+	): Promise<ResponseUserRepositoriesDTO[]> {
+		return this.githubService.getRepositoriesByUsername(data)
 	}
 }

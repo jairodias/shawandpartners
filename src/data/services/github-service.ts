@@ -3,7 +3,9 @@ import {
 	GithubListUsersDTO,
 	ListUsersDTO,
 	ResponseListUsersDTO,
+	ResponseUserRepositoriesDTO,
 	UserDetailsDTO,
+	UserRepositoriesDTO,
 } from '@/data/protocols/dto'
 import axios from 'axios'
 import env from '@/main/config/env'
@@ -43,6 +45,27 @@ export class GithubService implements IGithubService {
 		try {
 			const { data } = await axios.get(
 				`${env.api_github_url}/users/${username}`,
+			)
+
+			return data
+		} catch (error) {
+			throw new AppError({
+				message:
+					error.response.status === 404
+						? "User doesn't exists."
+						: error.message,
+				statusCode: error.response.status,
+				error,
+			})
+		}
+	}
+
+	async getRepositoriesByUsername({
+		username,
+	}: UserRepositoriesDTO): Promise<ResponseUserRepositoriesDTO[]> {
+		try {
+			const { data } = await axios.get(
+				`${env.api_github_url}/users/${username}/repos`,
 			)
 
 			return data

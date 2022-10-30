@@ -27,4 +27,16 @@ export default (router: Router): void => {
 		}),
 		userController.index,
 	)
+
+	router.get(
+		`/users/:username/repos`,
+		celebrate({
+			params: {
+				username: Joi.string()
+					.regex(/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$/)
+					.required(),
+			},
+		}),
+		userController.repositories,
+	)
 }

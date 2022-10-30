@@ -2,7 +2,9 @@ import {
 	GithubListUsersDTO,
 	ListUsersDTO,
 	ResponseListUsersDTO,
+	ResponseUserRepositoriesDTO,
 	UserDetailsDTO,
+	UserRepositoriesDTO,
 } from '@/data/protocols/dto'
 
 export interface IGithubService {
@@ -10,4 +12,7 @@ export interface IGithubService {
 	getUserByUsername: (
 		data: UserDetailsDTO,
 	) => Promise<GithubListUsersDTO>
+	getRepositoriesByUsername: (
+		data: UserRepositoriesDTO,
+	) => Promise<ResponseUserRepositoriesDTO[]>
 }

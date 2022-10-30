@@ -26,4 +26,17 @@ export class UserController {
 
 		return response.status(200).json({ data })
 	}
+
+	async repositories(
+		request: Request,
+		response: Response,
+	): Promise<Response> {
+		const { username } = request.params
+
+		const data = await makeUserService().userRepositories({
+			username,
+		})
+
+		return response.status(200).json({ data })
+	}
 }

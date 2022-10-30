@@ -10,3 +10,7 @@ export interface ListUsersDTO {
 export interface UserDetailsDTO {
 	username: string
 }
+
+export interface UserRepositoriesDTO {
+	username: string
+}
