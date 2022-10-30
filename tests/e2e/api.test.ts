@@ -171,6 +171,14 @@ describe('API E2E Test Suite', () => {
 	})
 
 	test.todo(
+		'GET /:username/repos - should return an error, if username provided is invalid',
+	)
+
+	test.todo(
+		"GET /:username/repos - should return an error if username doesn't exists",
+	)
+
+	test.todo(
 		'GET /:username/repos - should return an object with user repositories',
 	)
 })
