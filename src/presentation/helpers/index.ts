@@ -1,2 +1,2 @@
-export * from './http';
-export * from './factories';
+export * from './http'
+export * from './factories'

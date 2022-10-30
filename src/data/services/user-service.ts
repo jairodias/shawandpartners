@@ -1,12 +1,12 @@
-import { inject, injectable } from 'tsyringe';
+import { inject, injectable } from 'tsyringe'
 import {
 	ListUsersDTO,
 	ResponseListUsersDTO,
-} from '@/data/protocols/dto';
+} from '@/data/protocols/dto'
 import {
 	IGithubService,
 	IUserService,
-} from '@/data/protocols/services';
+} from '@/data/protocols/services'
 
 @injectable()
 export class UserService implements IUserService {
@@ -16,6 +16,6 @@ export class UserService implements IUserService {
 	) {}
 
 	async index(data: ListUsersDTO): Promise<ResponseListUsersDTO> {
-		return this.githubService.listUsers(data);
+		return this.githubService.listUsers(data)
 	}
 }

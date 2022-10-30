@@ -1,3 +1,3 @@
-import Helmet from 'helmet';
+import Helmet from 'helmet'
 
-export const helmet = Helmet();
+export const helmet = Helmet()

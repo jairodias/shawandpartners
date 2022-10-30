@@ -1,10 +1,10 @@
-import 'reflect-metadata';
-import 'dotenv/config';
-import env from '@/main/config/env';
+import 'reflect-metadata'
+import 'dotenv/config'
+import env from '@/main/config/env'
 
-import { setupApp } from '@/main/config/app';
+import { setupApp } from '@/main/config/app'
 
-const app = setupApp();
+const app = setupApp()
 app.listen(env.port, () =>
 	console.log(`Server running at http://localhost:${env.port}`),
-);
+)

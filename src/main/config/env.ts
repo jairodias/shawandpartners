@@ -4,4 +4,4 @@ export default {
 		process.env.API_GITHUB_URL || 'https://api.github.com',
 	application_hostname:
 		process.env.APPLICATION_HOSTNAME || 'http://localhost:8080',
-};
+}

@@ -1,8 +1,8 @@
 import {
 	ListUsersDTO,
 	ResponseListUsersDTO,
-} from '@/data/protocols/dto';
+} from '@/data/protocols/dto'
 
 export interface IGithubService {
-	listUsers: (data: ListUsersDTO) => Promise<ResponseListUsersDTO>;
+	listUsers: (data: ListUsersDTO) => Promise<ResponseListUsersDTO>
 }

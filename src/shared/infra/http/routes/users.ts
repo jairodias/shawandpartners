@@ -1,8 +1,8 @@
-import { Router } from 'express';
-import { UserController } from '@/presentation/controllers';
-import { celebrate, Joi } from 'celebrate';
+import { Router } from 'express'
+import { UserController } from '@/presentation/controllers'
+import { celebrate, Joi } from 'celebrate'
 
-const userController = new UserController();
+const userController = new UserController()
 
 export default (router: Router): void => {
 	router.get(
@@ -15,5 +15,5 @@ export default (router: Router): void => {
 			},
 		}),
 		userController.index,
-	);
-};
+	)
+}
