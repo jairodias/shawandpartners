@@ -1,23 +1,19 @@
 {
-    "compilerOptions": {
-        "outDir": "dist",
-        "module": "commonjs",
-        "target": "es2019",
-        "esModuleInterop": true,
-        "sourceMap": true,
-        "skipLibCheck": true,
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "rootDir": "src",
-        "baseUrl": "src",
-        "paths": {
-            "@/*": [
-                "*"
-            ]
-        }
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": []
+	"compilerOptions": {
+		"outDir": "dist",
+		"module": "commonjs",
+		"target": "es2019",
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"rootDir": "src",
+		"baseUrl": "src",
+		"paths": {
+			"@/*": ["*"]
+		}
+	},
+	"include": ["src"],
+	"exclude": []
 }
