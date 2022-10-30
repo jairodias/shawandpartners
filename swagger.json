@@ -1,0 +1,371 @@
+{
+    "swagger": "2.0.0",
+    "info": {
+        "title": "Backend Challenge",
+        "version": "1.0.0"
+    },
+    "host": "gentle-anchorage-70116.herokuapp.com",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "Manipulation associated routes the users resources"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Route responsible for list all users paginated",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseUsersDTO"
+                        },
+                        "description": "Success."
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorNotFoundError"
+                        },
+                        "description": "Resource Not Found."
+                    },
+                    "500": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorInternalServerError"
+                        },
+                        "description": "Internal Server Error."
+                    }
+                }
+            }
+        },
+        "/users/{username}/details": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Route responsible for search user data",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "username",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Github username valid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseUserDetailsDTO"
+                        },
+                        "description": "Success."
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorNotFoundError"
+                        },
+                        "description": "Resource Not Found."
+                    },
+                    "500": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorInternalServerError"
+                        },
+                        "description": "Internal Server Error."
+                    }
+                }
+            }
+        },
+        "/users/{username}/repos": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Route responsible for search user data",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "username",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Github username valid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseRepositoriesUserDTO"
+                        },
+                        "description": "Success."
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorNotFoundError"
+                        },
+                        "description": "Resource Not Found."
+                    },
+                    "500": {
+                        "schema": {
+                            "$ref": "#/definitions/ResponseErrorInternalServerError"
+                        },
+                        "description": "Internal Server Error."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ResponseUsersDTO": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "next": {
+                            "type": "string",
+                            "example": "https://gentle-anchorage-70116.herokuapp.com/users?per_page=10&since=45"
+                        },
+                        "has_more": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "login": {
+                                        "type": "string",
+                                        "example": "jairodias"
+                                    },
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 51006591
+                                    },
+                                    "node_id": {
+                                        "type": "string",
+                                        "example": "MDQ6VXNlcjUxMDA2NTkx"
+                                    },
+                                    "avatar_url": {
+                                        "type": "string",
+                                        "example": "https://avatars.githubusercontent.com/u/51006591?v=4"
+                                    },
+                                    "gravatar_id": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias"
+                                    },
+                                    "html_url": {
+                                        "type": "string",
+                                        "example": "https://github.com/jairodias"
+                                    },
+                                    "followers_url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias/followers"
+                                    },
+                                    "following_url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias/following{/other_user}"
+                                    },
+                                    "gists_url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias/gists{/gist_id}"
+                                    },
+                                    "starred_url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias/starred{/owner}{/repo}"
+                                    },
+                                    "subscriptions_url": {
+                                        "type": "string",
+                                        "example": "https://api.github.com/users/jairodias/subscriptions"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ResponseUserDetailsDTO": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "login": {
+                            "type": "string",
+                            "example": "jairodias"
+                        },
+                        "id": {
+                            "type": "integer",
+                            "example": 51006591
+                        },
+                        "node_id": {
+                            "type": "string",
+                            "example": "MDQ6VXNlcjUxMDA2NTkx"
+                        },
+                        "avatar_url": {
+                            "type": "string",
+                            "example": "https://avatars.githubusercontent.com/u/51006591?v=4"
+                        },
+                        "gravatar_id": {
+                            "type": "string",
+                            "example": ""
+                        },
+                        "url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias"
+                        },
+                        "html_url": {
+                            "type": "string",
+                            "example": "https://github.com/jairodias"
+                        },
+                        "followers_url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias/followers"
+                        },
+                        "following_url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias/following{/other_user}"
+                        },
+                        "gists_url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias/gists{/gist_id}"
+                        },
+                        "starred_url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias/starred{/owner}{/repo}"
+                        },
+                        "subscriptions_url": {
+                            "type": "string",
+                            "example": "https://api.github.com/users/jairodias/subscriptions"
+                        }
+                    }
+                }
+            }
+        },
+        "ResponseRepositoriesUserDTO": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "example": 398785001
+                        },
+                        "node_id": {
+                            "type": "string",
+                            "example": "MDEwOlJlcG9zaXRvcnkzOTg3ODUwMDE="
+                        },
+                        "avatar_url": {
+                            "type": "string",
+                            "example": "https://avatars.githubusercontent.com/u/51006591?v=4"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "command-laravel-proccessCSV"
+                        },
+                        "full_name": {
+                            "type": "string",
+                            "example": "jairodias/command-laravel-proccessCSV"
+                        },
+                        "private": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "owner": {
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias"
+                                },
+                                "html_url": {
+                                    "type": "string",
+                                    "example": "https://github.com/jairodias"
+                                },
+                                "followers_url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias/followers"
+                                },
+                                "following_url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias/following{/other_user}"
+                                },
+                                "gists_url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias/gists{/gist_id}"
+                                },
+                                "starred_url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias/starred{/owner}{/repo}"
+                                },
+                                "subscriptions_url": {
+                                    "type": "string",
+                                    "example": "https://api.github.com/users/jairodias/subscriptions"
+                                }
+                            }
+                        },
+                        "html_url": {
+                            "type": "string",
+                            "example": "https://github.com/jairodias/command-laravel-proccessCSV"
+                        },
+                        "url": {
+                            "type": "string",
+                            "example": "https://github.com/jairodias/command-laravel-proccessCSV"
+                        }
+                    }
+                }
+            }
+        },
+        "ResponseErrorInternalServerError": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string",
+                    "example": "INTERNAL_SERVER_ERROR"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Internal server error"
+                },
+                "stack": {
+                    "type": "string",
+                    "example": "Any stacktrace"
+                }
+            }
+        },
+        "ResponseErrorNotFoundError": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string",
+                    "example": "APP_ERROR"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Any error message"
+                }
+            }
+        }
+    }
+}

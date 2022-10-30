@@ -7,13 +7,15 @@ import {
 	Response,
 	NextFunction,
 } from 'express'
-import { readdirSync } from 'fs'
+import { readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import { customErrors } from '@/main/middlewares'
+import { serve, setup } from 'swagger-ui-express'
 
 export default (app: Express): void => {
 	const router = Router()
 	app.use('/api', router)
+	app.use('/docs', serve, setup(require('../../../swagger.json')))
 
 	readdirSync(
 		join(process.cwd(), 'src/shared/infra/http/routes'),

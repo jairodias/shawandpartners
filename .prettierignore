@@ -6,3 +6,4 @@ node_modules
 coverage
 .husky
 .vscode
+swagger.json
