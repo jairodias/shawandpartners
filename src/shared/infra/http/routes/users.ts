@@ -6,6 +6,18 @@ const userController = new UserController()
 
 export default (router: Router): void => {
 	router.get(
+		`/users/:username/details`,
+		celebrate({
+			params: {
+				username: Joi.string()
+					.regex(/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$/)
+					.required(),
+			},
+		}),
+		userController.details,
+	)
+
+	router.get(
 		'/users/',
 		celebrate({
 			query: {

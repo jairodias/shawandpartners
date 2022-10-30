@@ -2,7 +2,7 @@
  * RESPONSE DTO
  */
 
-interface GithubListUsers {
+export interface GithubListUsersDTO {
 	login: string
 	id: number
 	node_id: string
@@ -25,6 +25,6 @@ interface GithubListUsers {
 
 export interface ResponseListUsersDTO {
 	next: string
-	items: GithubListUsers[]
+	items: GithubListUsersDTO[]
 	has_more: boolean
 }

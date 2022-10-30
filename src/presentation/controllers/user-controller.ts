@@ -15,4 +15,15 @@ export class UserController {
 
 		return response.status(200).json({ data })
 	}
+
+	async details(
+		request: Request,
+		response: Response,
+	): Promise<Response> {
+		const { username } = request.params
+
+		const data = await makeUserService().userDetails({ username })
+
+		return response.status(200).json({ data })
+	}
 }
