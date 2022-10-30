@@ -170,9 +170,22 @@ describe('API E2E Test Suite', () => {
 		expect(data_valid_username_provided).toEqual(data)
 	})
 
-	test.todo(
-		'GET /:username/repos - should return an error, if username provided is invalid',
-	)
+	test('GET /:username/repos - should return an error, if username provided is invalid', async () => {
+		const invalid_username = '_jairodias_'
+		const response = await superTest(server).get(
+			`/api/users/${invalid_username}/details`,
+		)
+
+		expect(400).toBe(response.statusCode)
+
+		const [message] = response.body.messages
+		const error = response.body.error
+
+		expect(message).toEqual(
+			'username with value _jairodias_ fails to match the required pattern: /^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$/',
+		)
+		expect(error).toEqual('VALIDATION_ERROR')
+	})
 
 	test.todo(
 		"GET /:username/repos - should return an error if username doesn't exists",
