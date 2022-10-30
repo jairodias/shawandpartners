@@ -3,7 +3,7 @@
  */
 
 export interface ListUsersDTO {
-    since: number
-    page: number
-    per_page: number
+	since: number;
+	page: number;
+	per_page: number;
 }

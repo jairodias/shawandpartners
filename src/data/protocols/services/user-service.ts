@@ -1,5 +1,8 @@
-import { ListUsersDTO, ResponseListUsersDTO } from '@/data/protocols/dto'
+import {
+	ListUsersDTO,
+	ResponseListUsersDTO,
+} from '@/data/protocols/dto';
 
 export interface IUserService {
-    index: (data: ListUsersDTO) => Promise<ResponseListUsersDTO>
+	index: (data: ListUsersDTO) => Promise<ResponseListUsersDTO>;
 }
